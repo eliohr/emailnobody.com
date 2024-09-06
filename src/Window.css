@@ -1,0 +1,47 @@
+.window {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: gray;
+}
+
+.left-stuff {
+  margin: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.left-stuff img, p {
+  height: 50px;
+  margin: 10px;
+  align-content: center;
+}
+
+.close-button {
+  width: 20px;
+  height: 5px;
+  background-color: #ff7070;
+  border-radius: 0px;
+  border-bottom-left-radius: 10px;
+}
+
+.close-button:hover {
+  background-color: #ff2020;
+}
+
+.window-content {
+  background-color: white;
+  color: black;
+}
