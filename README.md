@@ -1,6 +1,6 @@
 # email nobody
 
-Using React + Vite for a windows-os-esque frontend. Sends requests to ...?
+Using React + Vite for a minimal windows-os-esque frontend. Sends requests to ...?
 
-Send stores message and resets the body.
-Receive fetches random message.
+"Sending" an email sends a POST request as described in the API doc and resets the fields.
+"Receiving" an email sends a GET request as described in the API doc for an email with a random id and displays the info received.
