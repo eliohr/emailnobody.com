@@ -7,7 +7,7 @@ import iconSend from '/send.png';
 const Desktop = () => {
     
     const [sendData, setSendData] = useState({
-        title: "send an email to nobody",
+        title: "email",
         image: iconSend,
         content:
             <>
@@ -17,7 +17,7 @@ const Desktop = () => {
     });
     
     const [receiveData, setReceiveData] = useState({
-        title: "receive an email from somebody",
+        title: "email",
         image: iconReceive,
         content:
             <>
@@ -27,18 +27,18 @@ const Desktop = () => {
     });
     
     const openSendWindow = () => {
-        setSendData({ sendData, isOpen: true });
-        setReceiveData({ receiveData, isOpen: false });
+        setSendData({ ...sendData, isOpen: true });
+        setReceiveData({ ...receiveData, isOpen: false });
     };
 
     const openReceiveWindow = () => {
-        setReceiveData({ receiveData, isOpen: true });
-        setSendData({ sendData, isOpen: false });
+        setReceiveData({ ...receiveData, isOpen: true });
+        setSendData({ ...sendData, isOpen: false });
     };
 
     const closeWindow = () => {
-        setSendData({ sendData, isOpen: false });
-        setReceiveData({ receiveData, isOpen: false }); 
+        setSendData({ ...sendData, isOpen: false });
+        setReceiveData({ ...receiveData, isOpen: false }); 
         sparkleAnimation();
     }
 
@@ -48,7 +48,7 @@ const Desktop = () => {
         
         for (let i = 1; i <= 4; i++) {
             setTimeout(() => {
-                sparkle.src = `/sparkle${i}.png`;
+                sparkle.src = `sparkle${i}.png`;
             }, i * 200);
         }
 
@@ -58,7 +58,7 @@ const Desktop = () => {
         <>
 
         <div className="sparkle-container">
-            <img id="sparkle" />
+            <img id="sparkle" src="sparkle4.png" />
         </div>
 
         <div className="app-icon-container">

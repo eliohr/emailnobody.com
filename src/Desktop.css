@@ -11,9 +11,9 @@
 }
 
 .app-icon {
-    margin: 20px;
-    width: 100px;
-    height: 100px;
+    margin: 1.5vw;
+    width: 7vw;
+    height: 7vw;
 }
 
 .sparkle-container {
@@ -22,7 +22,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 999;
+    z-index: -999;
 }
   
 #sparkle {
@@ -31,6 +31,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: stretch;
     opacity: 50%;
 }

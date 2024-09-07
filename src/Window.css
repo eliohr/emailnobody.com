@@ -24,7 +24,7 @@
 }
 
 .left-stuff img, p {
-  height: 50px;
+  height: 3.5vw;
   margin: 10px;
   align-content: center;
 }
@@ -33,6 +33,7 @@
   width: 20px;
   height: 5px;
   background-color: #ff7070;
+  cursor: pointer;
   border-radius: 0px;
   border-bottom-left-radius: 10px;
 }
