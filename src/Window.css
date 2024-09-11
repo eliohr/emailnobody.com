@@ -1,16 +1,39 @@
-.window {
-  position: fixed;
-  top: 20%;
-  left: 20%;
-  width: 60%;
-  height: 60%;
+/* win-wrap and win-pos styles from https://unplug.red */
+@media (min-width: 555px) {
+  .message {
+    display: none;
+  }
+}
+
+@media (max-width: 554px) {
+  .window {
+    display: none;
+  }
+}
+
+.message {
+  width: 80%;
+  height: 20%;
+  text-align: justify;
+  color: black;
   background-color: white;
-  display: flex;
-  flex-direction: column;
+  opacity: 80%;
+}
+
+.window {
+  min-width: 300px;
+  width: 50vw;
+  height: 50vh;
+  min-height: 380px;
+  position: absolute 5vw 5vw;
+  background-color: white;
   border-radius: 10px;
+  justify-content: center;
 }
 
 .window-header {
+  width: 100%;
+  z-index: 999;
   display: flex;
   justify-content: space-between;
   background-color: gray;
@@ -36,13 +59,18 @@
   cursor: pointer;
   border-radius: 0px;
   border-bottom-left-radius: 10px;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 .close-button:hover {
   background-color: #ff2020;
 }
 
-.window-content {
+.window-contents {
   background-color: white;
   color: black;
+  justify-content: center;
+  justify-self: center;
 }

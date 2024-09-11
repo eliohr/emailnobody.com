@@ -1,5 +1,6 @@
 import './Window.css';
 import PropTypes from 'prop-types';
+import { dragElement } from './moveable';
 
 const Window = ({ data, close }) => {
 
@@ -14,13 +15,11 @@ const Window = ({ data, close }) => {
           <img className="window-image" src={image} />
           <p className="window-title">{title}</p>
         </div>
-        
         <button className="close-button" onClick={close}></button>
-      </div>
-
-      <div className="window-content">
-        { content }
-      </div>
+        </div>
+        <div className="window-contents">
+          {content}
+        </div>
     </div>
   );
 };
