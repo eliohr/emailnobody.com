@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
+import './Contents.css';
+import oopsy from '/oopsy.png';
 
-const SendContents = () => {
+const SendContents = ({ close }) => {
 
     const [name, setName] = useState('');
     const [subject, setSubject] = useState('');
     const [body, setBody] = useState('');
+
+    async function oopsy() {
+        document.getElementById('oopsy').style.zIndex = '999';
+        document.getElementById('oopsy').style.opacity = '100';
+        setTimeout(() => {
+            document.getElementById('oopsy').style.opacity = '0';
+            document.getElementById('oopsy').style.zIndex = '-999';
+        }, 5000);
+    }
 
     async function handleSendEmail() {
 
@@ -26,38 +37,47 @@ const SendContents = () => {
             if (response.ok) {
                 const result = await response.json();
                 console.log('Sent email ', result);
+                close();
             } else {
                 console.error('Error: ', response.statusText);
+                close();
             }
 
         } catch (error) {
             console.error('Request failed', error);
+            oopsy();
         }
 
     };
 
     return (
             <>
+            <img id="oopsy" src="/oopsy.png"></img>
             <div className="contents">
-                <div className="input-line" id="name">
+                <div className="input-wrap" id="name">
                     <p>name</p>
                     <div id="address">
-                        <input maxLength="15" id="name"
+                        <input autocomplete="off"
+                        maxLength="15"
+                        placeholder="someone"
+                        id="name"
                         name="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}></input>
                         <p>@emailnobody.com</p>
                     </div>
                 </div>
-                <div className="input-line" id="subject">
+                <div className="input-wrap" id="subject">
                     <p>subject</p>
-                    <input maxLength="15" id="subject"
+                    <input autocomplete="off"
+                    maxLength="15"
+                    placeholder="something"
+                    id="subject"
                     name="subject"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}></input>
                 </div>
-                <div className="body" id="body">
-                    <p>body</p>
+                <div className="body-wrap" id="body">
                     <textarea id="body"
                     name="body"
                     value={body}

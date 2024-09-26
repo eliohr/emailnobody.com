@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import './Contents.css';
 
-const ReceiveContents = () => {
-    
+function ReceiveContents() {
+
     const [name, setName] = useState('');
     const [subject, setSubject] = useState('');
     const [body, setBody] = useState('');
@@ -67,7 +68,7 @@ const ReceiveContents = () => {
         setSubject(data.subject);
         setBody(data.body);
         setSent(data.sent);
-    }
+    };
 
     const loadEmail = async () => {
         const x = await getCount();
@@ -75,10 +76,10 @@ const ReceiveContents = () => {
         const randomIndex = Math.floor(Math.random() * x) + 1;
         console.log('random index is ', randomIndex);
         await getEmail(randomIndex);
-    }
+    };
 
     return (
-            <>
+        <>
             <div className="contents">
                 <div id="who-when">
                     <p>from: {email.name}@emailnobody.com</p>
@@ -87,8 +88,8 @@ const ReceiveContents = () => {
                 <p>subject: {email.subject}</p>
                 <p>body: {email.body}</p>
             </div>
-            </>
+        </>
     );
-};
+}
 
 export default ReceiveContents;

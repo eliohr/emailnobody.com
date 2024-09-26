@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import './Desktop.css';
 import Window from './Window';
+import WarningContents from './WarningContents';
 import SendContents from './SendContents';
 import ReceiveContents from './ReceiveContents';
+import iconWarning from '/warning.png';
 import iconReceive from '/receive.png';
 import iconSend from '/send.png';
 import { dragElement } from './moveable';
 
 const Desktop = () => {
     
+    // TODO: only display warning when browser hasn't seen site
+    const [warningData, setWarningData] = useState({
+        title: "for your information",
+        image: iconWarning,
+        content: <WarningContents  />,
+        isOpen: true
+    });
+
     const [sendData, setSendData] = useState({
         title: "email",
         image: iconSend,
         content: <SendContents />,
-        isOpen: true
+        isOpen: false
     });
     
     const [receiveData, setReceiveData] = useState({
@@ -26,26 +36,29 @@ const Desktop = () => {
     const openSendWindow = () => {
         setSendData({ ...sendData, isOpen: true });
         setReceiveData({ ...receiveData, isOpen: false });
+        setWarningData({ ...warningData, isOpen: false });
     };
 
     const openReceiveWindow = () => {
         setReceiveData({ ...receiveData, isOpen: true });
         setSendData({ ...sendData, isOpen: false });
+        setWarningData({ ...warningData, isOpen: false });
     };
 
     const closeWindow = () => {
         setSendData({ ...sendData, isOpen: false });
         setReceiveData({ ...receiveData, isOpen: false }); 
+        setWarningData({ ...warningData, isOpen: false });
         sparkleAnimation();
     }
-
+    
     // window mobility modified from https://unplug.red
     useEffect(() => {
         const headers = document.getElementsByClassName("window-header");
         for (let i = 0; i < headers.length; i++) {
             dragElement(headers[i].parentNode, headers[i], true);
         }
-    }, [sendData.isOpen, receiveData.isOpen]);
+    }, [sendData.isOpen, receiveData.isOpen, warningData.isOpen]);
 
     const sparkleAnimation = () => {
 
@@ -62,7 +75,7 @@ const Desktop = () => {
     return (
         <>
 
-        <p className="message">please, looking at this on larger device, thank you</p>
+        <p className="message">still working on support for smaller screens :/</p>
         <div className="sparkle-container">
             <img id="sparkle" src="sparkle4.png" />
         </div>
@@ -72,8 +85,9 @@ const Desktop = () => {
             <img src="/receive.png" className="app-icon" onClick={openReceiveWindow} />
         </div>
         
-        {sendData.isOpen && <Window id="send-window" data={sendData} close={closeWindow} />}
-        {receiveData.isOpen && <Window id="receive-window" data={receiveData} close={closeWindow} />}
+        {warningData.isOpen && React.cloneElement(<Window id="warning-window" />, { data: warningData, close: openSendWindow })}
+        {sendData.isOpen && React.cloneElement(<Window id="send-window" />, { data: sendData, close: closeWindow })}
+        {receiveData.isOpen && React.cloneElement(<Window id="receive-window" />, { data: receiveData, close: closeWindow })}
 
         </>
     );

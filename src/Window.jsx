@@ -1,6 +1,6 @@
 import './Window.css';
 import PropTypes from 'prop-types';
-import { dragElement } from './moveable';
+import React from 'react';
 
 const Window = ({ data, close }) => {
 
@@ -16,10 +16,10 @@ const Window = ({ data, close }) => {
           <p className="window-title">{title}</p>
         </div>
         <button className="close-button" onClick={close}></button>
-        </div>
-        <div className="window-contents">
-          {content}
-        </div>
+      </div>
+      <div className="window-contents">
+        {React.cloneElement(content, { close })}
+      </div>
     </div>
   );
 };

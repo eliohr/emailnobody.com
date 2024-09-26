@@ -74,3 +74,16 @@
   justify-content: center;
   justify-self: center;
 }
+
+.warning-wrap {
+  width: 100%;
+  justify-items: left;
+  text-align: left;
+  margin: 10px;
+}
+
+.button-wrap {
+  width: 100%;
+  justify-items: right;
+  margin: 10px;
+}
