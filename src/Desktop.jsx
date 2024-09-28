@@ -74,26 +74,18 @@ const Desktop = () => {
 
     // TODO: figure out how to make oopsy disappear only 5s after the last error
 
-    /*
-    might be because I don't understand scope of React variables
-    for example, oopsTime should maybe be set as
-
-    const [oopsTime, setOopsTime] = useState(0);
-
-    but when I tried doing that it STILL was undefined
-    outside of oopsy()in the debug watch
-    */
-
     var oopsTime = 0;
-
+    
     function oopsy() {
-        document.getElementById('oopsy').style.transition = 'none';
-        document.getElementById('oopsy').style.opacity = '100';
-        clearTimeout(oopsTime);
+        document.getElementById ('oopsy').style.opacity = '100';
+        clearTimeout (oopsTime);
         oopsTime = setTimeout(
             oopsDisplay,
-            5000
-        )
+            3000);
+    }
+
+    function oopsDisplay() {
+        document.getElementById('oopsy').style.opacity = '0';
     }
 
     /*
@@ -106,12 +98,12 @@ const Desktop = () => {
         setTimeout(oopsDisplay, 100);
     }
 
-    */
-
     function oopsDisplay() {
         document.getElementById('oopsy').style.transition = 'opacity 3s';
         document.getElementById('oopsy').style.opacity = '0';
     }
+
+    */
 
     return (
         <>
