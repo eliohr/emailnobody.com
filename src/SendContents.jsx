@@ -2,20 +2,11 @@ import React, { useState } from 'react';
 import './Contents.css';
 import oopsy from '/oopsy.png';
 
-const SendContents = ({ close }) => {
+const SendContents = ({ close, oopsy }) => {
 
     const [name, setName] = useState('');
     const [subject, setSubject] = useState('');
     const [body, setBody] = useState('');
-
-    async function oopsy() {
-        document.getElementById('oopsy').style.zIndex = '999';
-        document.getElementById('oopsy').style.opacity = '100';
-        setTimeout(() => {
-            document.getElementById('oopsy').style.opacity = '0';
-            document.getElementById('oopsy').style.zIndex = '-999';
-        }, 5000);
-    }
 
     async function handleSendEmail() {
 
@@ -41,10 +32,12 @@ const SendContents = ({ close }) => {
             } else {
                 console.error('Error: ', response.statusText);
                 close();
+                oopsy();
             }
 
         } catch (error) {
             console.error('Request failed', error);
+            close();
             oopsy();
         }
 
@@ -52,7 +45,6 @@ const SendContents = ({ close }) => {
 
     return (
             <>
-            <img id="oopsy" src="/oopsy.png"></img>
             <div className="contents">
                 <div className="input-wrap" id="name">
                     <p>name</p>

@@ -2,7 +2,7 @@ import './Window.css';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Window = ({ data, close }) => {
+const Window = ({ data, close, oopsy }) => {
 
   const { title, image, content, isOpen } = data;
 
@@ -18,7 +18,7 @@ const Window = ({ data, close }) => {
         <button className="close-button" onClick={close}></button>
       </div>
       <div className="window-contents">
-        {React.cloneElement(content, { close })}
+        {React.cloneElement(content, { close, oopsy })}
       </div>
     </div>
   );

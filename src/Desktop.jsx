@@ -50,7 +50,7 @@ const Desktop = () => {
         setReceiveData({ ...receiveData, isOpen: false }); 
         setWarningData({ ...warningData, isOpen: false });
         sparkleAnimation();
-    }
+    };
     
     // window mobility modified from https://unplug.red
     useEffect(() => {
@@ -72,9 +72,26 @@ const Desktop = () => {
 
     }
 
+    // TODO: figure out how to make oopsy disappear only 5s after the last error
+
+    var oopsTime = 0;
+
+    function oopsy() {
+        document.getElementById('oopsy').style.opacity = '100';
+        clearTimeout(oopsTime);
+        oopsTime = setTimeout(
+            oopsDisplay,
+            5000
+        )
+    }
+
+    function oopsDisplay() {
+        document.getElementById('oopsy').style.opacity = '0';
+    }
+
     return (
         <>
-
+        <img id="oopsy" src="/oopsy.png"></img>
         <p className="message">still working on support for smaller screens :/</p>
         <div className="sparkle-container">
             <img id="sparkle" src="sparkle4.png" />
@@ -86,8 +103,8 @@ const Desktop = () => {
         </div>
         
         {warningData.isOpen && React.cloneElement(<Window id="warning-window" />, { data: warningData, close: openSendWindow })}
-        {sendData.isOpen && React.cloneElement(<Window id="send-window" />, { data: sendData, close: closeWindow })}
-        {receiveData.isOpen && React.cloneElement(<Window id="receive-window" />, { data: receiveData, close: closeWindow })}
+        {sendData.isOpen && React.cloneElement(<Window id="send-window" />, { data: sendData, close: closeWindow, oopsy: oopsy })}
+        {receiveData.isOpen && React.cloneElement(<Window id="receive-window" />, { data: receiveData, close: closeWindow, oopsy: oopsy })}
 
         </>
     );

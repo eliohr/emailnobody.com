@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Contents.css';
 
-function ReceiveContents() {
+function ReceiveContents({ close, oopsy }) {
 
     const [name, setName] = useState('');
     const [subject, setSubject] = useState('');
@@ -55,10 +55,14 @@ function ReceiveContents() {
                 parseEmail(result);
             } else {
                 console.error('Error: ', response.statusText);
+                close();
+                oopsy();
             }
 
         } catch (error) {
             console.error('Request failed', error);
+            close();
+            oopsy();
         }
 
     };

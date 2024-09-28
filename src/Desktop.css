@@ -34,3 +34,16 @@
     object-fit: stretch;
     opacity: 50%;
 }
+
+#oopsy {
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0;
+    transition: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+}
