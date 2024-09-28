@@ -105,12 +105,12 @@ const Desktop = () => {
         setTimeout(oopsDisplay, 100);
     }
 
+    */
+
     function oopsDisplay() {
         document.getElementById('oopsy').style.transition = 'opacity 3s';
         document.getElementById('oopsy').style.opacity = '0';
     }
-
-    */
 
     return (
         <>
