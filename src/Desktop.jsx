@@ -72,25 +72,8 @@ const Desktop = () => {
 
     }
 
-    // TODO: figure out how to make oopsy disappear only 5s after the last error
-
-    var oopsTime = 0;
-    
-    function oopsy() {
-        document.getElementById ('oopsy').style.opacity = '100';
-        clearTimeout (oopsTime);
-        oopsTime = setTimeout(
-            oopsDisplay,
-            3000);
-    }
-
-    function oopsDisplay() {
-        document.getElementById('oopsy').style.opacity = '0';
-    }
-
-    /*
-
-    // fixed oopsy; still don't understand how this works or why the other one doesn't work
+    // fixed oopsy; still don't understand why I need to call
+    // the last two parts after the first two parts
 
     function oopsy() {
         document.getElementById('oopsy').style.transition = 'none';
@@ -102,8 +85,6 @@ const Desktop = () => {
         document.getElementById('oopsy').style.transition = 'opacity 3s';
         document.getElementById('oopsy').style.opacity = '0';
     }
-
-    */
 
     return (
         <>
