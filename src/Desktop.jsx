@@ -87,6 +87,7 @@ const Desktop = () => {
     var oopsTime = 0;
 
     function oopsy() {
+        document.getElementById('oopsy').style.transition = 'none';
         document.getElementById('oopsy').style.opacity = '100';
         clearTimeout(oopsTime);
         oopsTime = setTimeout(
