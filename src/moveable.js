@@ -1,5 +1,5 @@
 // Copyright (c) 2019 Daybrush
-// licensed under MIT License in LICENSE.txt; modified for React
+// licensed under MIT License in LICENSE.txt; modified for this project
 
 var z = 0;
 export function dragElement(elmnt, header=null, istop=false) {
@@ -14,7 +14,7 @@ export function dragElement(elmnt, header=null, istop=false) {
     }
     function dragMouseDown(e) {
         e = e || window.event;
-        if (e.target.tagName === "A" || e.target.tagName === "INPUT" || (e.target.className.baseVal || e.target.className).search("win-button") >= 0)
+        if (e.target.tagName === "A" || e.target.tagName === "INPUT" || (e.target.className.baseVal || e.target.className).search("close-button") >= 0)
             return;
         e.preventDefault();
         pos3 = e.clientX;

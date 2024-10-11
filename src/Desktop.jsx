@@ -95,8 +95,14 @@ const Desktop = () => {
         </div>
 
         <div className="app-icon-container">
-            <img src="/send.png" className="app-icon" onClick={openSendWindow} />
-            <img src="/receive.png" className="app-icon" onClick={openReceiveWindow} />
+            <div id="title">
+                <h2>email nobody dot com</h2>
+                <p>by <a href="https://elihookerreese.com" target="_blank"><b>eli hooker reese</b></a></p>
+            </div>
+            <div id="apps">
+                <img src="/send.png" className="app-icon" onClick={openSendWindow} />
+                <img src="/receive.png" className="app-icon" onClick={openReceiveWindow} />
+            </div>
         </div>
         
         {warningData.isOpen && React.cloneElement(<Window id="warning-window" />, { data: warningData, close: openSendWindow })}

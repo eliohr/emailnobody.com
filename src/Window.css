@@ -1,11 +1,10 @@
-/* win-wrap and win-pos styles from https://unplug.red */
-@media (min-width: 555px) {
+@media (min-width: 600px) {
   .message {
     display: none;
   }
 }
 
-@media (max-width: 554px) {
+@media (max-width: 599px) {
   .window {
     display: none;
   }
@@ -18,17 +17,6 @@
   color: black;
   background-color: white;
   opacity: 80%;
-}
-
-.window {
-  min-width: 300px;
-  width: 50vw;
-  height: 50vh;
-  min-height: 380px;
-  position: absolute 5vw 5vw;
-  background-color: white;
-  border-radius: 10px;
-  justify-content: center;
 }
 
 .window-header {
@@ -50,6 +38,16 @@
   height: 3.5vw;
   margin: 10px;
   align-content: center;
+}
+
+.window {
+  width: 50vw;
+  height: 50vh;
+  position: absolute;
+  border-radius: 10px;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -60%);
 }
 
 .close-button {
