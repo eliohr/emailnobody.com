@@ -46,37 +46,53 @@ const SendContents = ({ close, oopsy }) => {
     return (
             <>
             <div className="contents">
-                <div className="input-wrap" id="name">
-                    <p>name</p>
-                    <div id="address">
-                        <input autocomplete="off"
-                        maxLength="15"
-                        placeholder="someone"
-                        id="name"
-                        name="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}></input>
-                        <p>@emailnobody.com</p>
+                <div className="nonbutton-parent">
+                    <div className="nonbutton">
+                            <div className="input-wrap" id="name">
+                                <p>name</p>
+                                <div className="input-line" id="input">
+                                    <input 
+                                        autocomplete="off"
+                                        maxLength="16"
+                                        placeholder="someone"
+                                        id="name"
+                                        name="name"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                    />
+                                    <p>@emailnobody.com</p>
+                                </div>
+                            </div>
+                            <div className="input-wrap" id="subject">
+                                <p>subject</p>
+                                <div className="input-line" id="input">
+                                <input
+                                    autocomplete="off"
+                                    maxLength="32"
+                                    placeholder="something"
+                                    id="subject"
+                                    name="subject"
+                                    value={subject}
+                                    onChange={(e) => setSubject(e.target.value)}
+                                />
+                                </div>
+                            </div>
+                            <div className="input-wrap" id="body">
+                                <div className="input-line" id="body">
+                                    <textarea className="input-line"
+                                        id="body"
+                                        name="body"
+                                        maxlength="2048"
+                                        value={body}
+                                        placeholder="hello this is my email......"
+                                        onChange={(e) => setBody(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <button id="send" onClick={handleSendEmail}>send it</button>
                 </div>
-                <div className="input-wrap" id="subject">
-                    <p>subject</p>
-                    <input autocomplete="off"
-                    maxLength="15"
-                    placeholder="something"
-                    id="subject"
-                    name="subject"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}></input>
-                </div>
-                <div className="body-wrap" id="body">
-                    <textarea id="body"
-                    name="body"
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}></textarea>
-                </div>
-                <button id="send" onClick={handleSendEmail}>send it</button>
-            </div>
             </>
     );
 };

@@ -11,9 +11,23 @@ import { dragElement } from './moveable';
 
 const Desktop = () => {
     
-    // TODO: only display warning when browser hasn't seen site
+    /*
+
+    // only display warning when browser hasn't seen site
+    useEffect (() => {
+        if(document.cookie = "HasVisited=true"){
+            setWarning(false);
+        }
+        else {
+            document.cookie = "HasVisited=true";
+            setWarning(true);
+        }
+    });
+
+    */
+
     const [warningData, setWarningData] = useState({
-        title: "for your information",
+        title: "fyi",
         image: iconWarning,
         content: <WarningContents  />,
         isOpen: true
@@ -32,25 +46,55 @@ const Desktop = () => {
         content: <ReceiveContents />,
         isOpen: false
     });
+
+    const [warning, setWarning] = useState(true);
     
     const openSendWindow = () => {
-        setSendData({ ...sendData, isOpen: true });
-        setReceiveData({ ...receiveData, isOpen: false });
-        setWarningData({ ...warningData, isOpen: false });
+        if(!warning) {
+            setSendData({ ...sendData, isOpen: true });
+            setReceiveData({ ...receiveData, isOpen: false });
+            setWarningData({ ...warningData, isOpen: false });
+        }
+        else {
+            pleaseAccept();
+        }
     };
 
     const openReceiveWindow = () => {
-        setReceiveData({ ...receiveData, isOpen: true });
-        setSendData({ ...sendData, isOpen: false });
-        setWarningData({ ...warningData, isOpen: false });
+        if(!warning) {
+            setReceiveData({ ...receiveData, isOpen: true });
+            setSendData({ ...sendData, isOpen: false });
+            setWarningData({ ...warningData, isOpen: false });
+        }
+        else {
+            pleaseAccept();
+        };
     };
 
     const closeWindow = () => {
-        setSendData({ ...sendData, isOpen: false });
-        setReceiveData({ ...receiveData, isOpen: false }); 
-        setWarningData({ ...warningData, isOpen: false });
-        sparkleAnimation();
+        if(!warning) {
+            setSendData({ ...sendData, isOpen: false });
+            setReceiveData({ ...receiveData, isOpen: false }); 
+            setWarningData({ ...warningData, isOpen: false });
+            sparkleAnimation();
+        }
+        else {
+            pleaseAccept();
+        };
     };
+
+    const warnDone = () => {
+        
+        setWarning(false);
+
+        // not sure why openSendWindow reads the warning as true until
+        // the second click even when call it within a setTimeout
+
+        setSendData({ ...sendData, isOpen: true });
+        setReceiveData({ ...receiveData, isOpen: false });
+        setWarningData({ ...warningData, isOpen: false });
+
+    }
     
     // window mobility modified from https://unplug.red
     useEffect(() => {
@@ -72,9 +116,6 @@ const Desktop = () => {
 
     }
 
-    // fixed oopsy; still don't understand why I need to call
-    // the last two parts after the first two parts
-
     function oopsy() {
         document.getElementById('oopsy').style.transition = 'none';
         document.getElementById('oopsy').style.opacity = '100';
@@ -86,9 +127,21 @@ const Desktop = () => {
         document.getElementById('oopsy').style.opacity = '0';
     }
 
+    function pleaseAccept() {
+        document.getElementById('please-accept').style.transition = 'none';
+        document.getElementById('please-accept').style.opacity = '100';
+        setTimeout(paDisplay, 100);
+    }
+
+    function paDisplay() {
+        document.getElementById('please-accept').style.transition = 'opacity 3s';
+        document.getElementById('please-accept').style.opacity = '0';
+    }
+
     return (
         <>
         <img id="oopsy" src="/oopsy.png"></img>
+        <img id="please-accept" src="/pa.png"></img>
         <p className="message">still working on support for smaller screens :/</p>
         <div className="sparkle-container">
             <img id="sparkle" src="sparkle4.png" />
@@ -105,7 +158,7 @@ const Desktop = () => {
             </div>
         </div>
         
-        {warningData.isOpen && React.cloneElement(<Window id="warning-window" />, { data: warningData, close: openSendWindow })}
+        {warningData.isOpen && React.cloneElement(<Window id="warning-window" />, { data: warningData, close: openSendWindow, ok: warnDone })}
         {sendData.isOpen && React.cloneElement(<Window id="send-window" />, { data: sendData, close: closeWindow, oopsy: oopsy })}
         {receiveData.isOpen && React.cloneElement(<Window id="receive-window" />, { data: receiveData, close: closeWindow, oopsy: oopsy })}
 

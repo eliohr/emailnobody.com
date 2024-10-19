@@ -6,7 +6,7 @@
     }
 
     .app-icon {
-        padding-right: 30px;
+        margin-right: 30px;
     }
 
     #title {
@@ -26,6 +26,12 @@
     #title h2 {
         font-size: min(4vw, 40px);
     }
+
+    #oopsy, #please-accept {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);    
+    }
 }
 
 @media (max-width: 599px) {
@@ -35,12 +41,14 @@
     }
 
     .app-icon {
-        padding: 10px 30px;
+        margin: 10px 30px;
     }
 
-  #oopsy {
-    display: none;
-  }
+    #oopsy, #please-accept {
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -80%);
+    }
 }
 
 #title * {
@@ -58,6 +66,10 @@
     background-color:gray;
 }
 
+.app-icon {
+  cursor: pointer;
+}
+
 .sparkle-container {
     position: fixed;
     top: 0;
@@ -71,21 +83,21 @@
     position: absolute;
     top: 100px;
     left: 0;
-    width: 100%;
+    width: 100%;    
     height: 90%;
     object-fit: stretch;
     opacity: 50%;
 }
 
-#oopsy {
-    z-index: 999;
+#oopsy, #please-accept {
     pointer-events: none;
     opacity: 0;
     transition: none;
     position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -60%);
     width: 50%;
     height: 50%;
+}
+
+#please-accept {
+    z-index: 99;
 }

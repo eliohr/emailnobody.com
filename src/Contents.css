@@ -1,95 +1,86 @@
 .contents {
-    width: 100%;
-    height: auto;
-}
-
-
-#warning-wrap {
-    height: 100px;
-    width: 100%;
-    justify-items: left;
-    text-align: left;
-    margin: 20px;
-}
-
-#ok-wrap {
-    width: 100%;
-    margin: 10px;
-}
-
-
-
-textarea
-{
-    width:100%;
-    border: none;
-    resize: none;
-    background-color: transparent;
-    position: relative;
-    right: 2px;
-    outline: none;
-    font-family: 'Times New Roman', Times, serif;
-    height: 100px;
-}
-
-
-.contents {
     justify-self: center;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
+    height: auto;
 }
 
 .contents * {
     font-size: 18px;
 }
 
-.outlined {
+.nonbutton-parent {
     width: 100%;
-    outline: solid black;
-    outline-width: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nonbutton {
+    width: 90%;
+    padding: 10px;
+}
+
+#warning {
+    width: 100%;
+    height: 100%;
+    text-align: left;
 }
 
 .input-wrap {
     width: 100%;
-    margin: 10px;
     display: flex;
-    align-items: space-between;
 }
 
-.input-wrap input {
-    background-color: white;
-    max-width: 15vw;
-    color: black;
-    border: none;
-    outline: none;
-    box-shadow: none;
-}
-
-.body-wrap {
+.input-line {
     width: 100%;
-    margin: 10px;
-    margin-top: 30px;
-    display: flex-column;
-    align-items: left;
 }
 
-.body-wrap textarea {
-    margin: 10px;
-    width: 100%;
-    background-color: white;
-    color: black;
-    resize: none;
+#input p {
+    margin-left: 0;
+    padding-left: 0;
 }
 
-#name * {
+#subject #input {
+    margin-left: 0;
+    padding-left: 0;
+    margin-right: 10px;
+}
+
+#input input {
+    margin-right: 0;
+    padding-right: 0;
     text-align: right;
 }
 
-#subject * {
-    text-align: left;
+input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: black;
+}
+
+textarea {
+    width: 100%;
+    border: none;
+    margin: 10px;
+    margin-top: 20px;
+    padding-right: 10px;
+    resize: none;
+    background-color: transparent;
+    outline: none;
+    height: 20vh;
+    font-size-adjust: 0.3;
+    color: black;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+textarea ::-webkit-scrollbar {
+    display: none;
 }
 
 #who-when {
@@ -99,21 +90,8 @@ textarea
     align-items: space-between;
 }
 
-#address {
+#input {
     display: flex;
     flex-direction: row;
     align-items: right;
 }
-
-.warning-wrap {
-    width: 100%;
-    justify-items: left;
-    text-align: left;
-    margin: 10px;
-  }
-  
-  .button-wrap {
-    width: 100%;
-    justify-items: right;
-    margin: 10px;
-  }
