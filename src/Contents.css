@@ -29,9 +29,10 @@
     text-align: left;
 }
 
-.input-wrap {
+.row-wrap {
     width: 100%;
     display: flex;
+    justify-content: space-between;
 }
 
 .input-line {
@@ -63,12 +64,30 @@ input {
     color: black;
 }
 
+#time {
+    text-transform: uppercase;
+    color: gray;
+    font-size: 10px;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+#margin-guy {
+    width: 100%;
+}
+
 textarea {
     width: 100%;
     border: none;
     margin: 10px;
     margin-top: 20px;
-    padding-right: 10px;
+    padding-right: 20px;
     resize: none;
     background-color: transparent;
     outline: none;
@@ -79,15 +98,13 @@ textarea {
     scrollbar-width: none;
 }
 
-textarea ::-webkit-scrollbar {
-    display: none;
+.body-out {
+    caret-color: transparent;
+    user-select: none;
 }
 
-#who-when {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: space-between;
+textarea ::-webkit-scrollbar {
+    display: none;
 }
 
 #input {

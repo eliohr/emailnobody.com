@@ -116,6 +116,17 @@ const Desktop = () => {
 
     }
 
+    function profanity() {
+        document.getElementById('profanity').style.transition = 'none';
+        document.getElementById('profanity').style.opacity = '100';
+        setTimeout(pDisplay, 100);
+    }
+
+    function pDisplay() {
+        document.getElementById('profanity').style.transition = 'opacity 3s';
+        document.getElementById('profanity').style.opacity = '0';
+    }
+
     function oopsy() {
         document.getElementById('oopsy').style.transition = 'none';
         document.getElementById('oopsy').style.opacity = '100';
@@ -140,6 +151,7 @@ const Desktop = () => {
 
     return (
         <>
+        <img id="profanity" src="/profanity.png"></img>
         <img id="oopsy" src="/oopsy.png"></img>
         <img id="please-accept" src="/pa.png"></img>
         <p className="message">still working on support for smaller screens :/</p>
@@ -159,7 +171,7 @@ const Desktop = () => {
         </div>
         
         {warningData.isOpen && React.cloneElement(<Window id="warning-window" />, { data: warningData, close: openSendWindow, ok: warnDone })}
-        {sendData.isOpen && React.cloneElement(<Window id="send-window" />, { data: sendData, close: closeWindow, oopsy: oopsy })}
+        {sendData.isOpen && React.cloneElement(<Window id="send-window" />, { data: sendData, close: closeWindow, oopsy: oopsy, profanity: profanity })}
         {receiveData.isOpen && React.cloneElement(<Window id="receive-window" />, { data: receiveData, close: closeWindow, oopsy: oopsy })}
 
         </>

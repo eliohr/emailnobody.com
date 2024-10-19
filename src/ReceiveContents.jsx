@@ -12,7 +12,7 @@ function ReceiveContents({ close, oopsy }) {
         name: name,
         subject: subject,
         body: body,
-        createdon: sent
+        sent: sent
     };
 
     useEffect(() => {
@@ -67,11 +67,31 @@ function ReceiveContents({ close, oopsy }) {
 
     };
 
+    function formatDateBasic(date) {
+        const dateObj = new Date(date);
+      
+      
+        const timezoneOffset = dateObj.getTimezoneOffset(); // e.g., -240 for UTC+4, 300 for UTC-5
+      
+        const localDate = new Date(dateObj.getTime() - timezoneOffset * 60000);
+      
+        return localDate.toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+    }
+
     const parseEmail = (data) => {
         setName(data.name);
         setSubject(data.subject);
         setBody(data.body);
-        setSent(data.sent);
+        var sentDate = new Date(data.sent);
+        var sentString = formatDateBasic(sentDate);
+        setSent(sentString);
     };
 
     const loadEmail = async () => {
@@ -85,12 +105,27 @@ function ReceiveContents({ close, oopsy }) {
     return (
         <>
             <div className="contents">
-                <div id="who-when">
-                    <p>from: {email.name}@emailnobody.com</p>
-                    <p>{email.sent}</p>
+                <div className="nonbutton-parent">
+                    <div className="nonbutton">
+                        <div className="row-wrap" id="name">
+                            <p className="left" id="margin-guy">{email.name}@emailnobody.com</p>
+                            <p className="right" id="time">{email.sent}</p>
+                        </div>
+                        <div className="row-wrap" id="subject">
+                            <p className="left">subject: </p>
+                            <p className="right">{email.subject}</p>
+                        </div>
+                        <div className="row-wrap" id="body">
+                            <textarea className="input-line body-out"
+                                    id="body"
+                                    name="body"
+                                    maxlength="2048"
+                                    value={email.body}
+                                    placeholder="hello this is my email......"
+                                />
+                        </div>
+                    </div>
                 </div>
-                <p>subject: {email.subject}</p>
-                <p>body: {email.body}</p>
             </div>
         </>
     );

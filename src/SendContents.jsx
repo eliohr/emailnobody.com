@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './Contents.css';
-import oopsy from '/oopsy.png';
 
-const SendContents = ({ close, oopsy }) => {
+const SendContents = ({ close, oopsy, profanity }) => {
 
     const [name, setName] = useState('');
     const [subject, setSubject] = useState('');
@@ -16,6 +15,12 @@ const SendContents = ({ close, oopsy }) => {
             body: body,
         };
 
+        function isClean(contents) {
+            // in the near future will implement https://github.com/jo3-l/obscenity
+            return true;
+        }
+
+        if ((isClean(email.name)) && (isClean(email.subject)) && (isClean(email.body))) {
         try {
             const response = await fetch('http://localhost:8085/emails', {
                 method: 'POST',
@@ -40,6 +45,7 @@ const SendContents = ({ close, oopsy }) => {
             close();
             oopsy();
         }
+    } else profanity();
 
     };
 
@@ -48,13 +54,13 @@ const SendContents = ({ close, oopsy }) => {
             <div className="contents">
                 <div className="nonbutton-parent">
                     <div className="nonbutton">
-                            <div className="input-wrap" id="name">
+                            <div className="row-wrap" id="name">
                                 <p>name</p>
                                 <div className="input-line" id="input">
                                     <input 
                                         autocomplete="off"
                                         maxLength="16"
-                                        placeholder="someone"
+                                        placeholder="somebody"
                                         id="name"
                                         name="name"
                                         value={name}
@@ -63,7 +69,7 @@ const SendContents = ({ close, oopsy }) => {
                                     <p>@emailnobody.com</p>
                                 </div>
                             </div>
-                            <div className="input-wrap" id="subject">
+                            <div className="row-wrap" id="subject">
                                 <p>subject</p>
                                 <div className="input-line" id="input">
                                 <input
@@ -77,7 +83,7 @@ const SendContents = ({ close, oopsy }) => {
                                 />
                                 </div>
                             </div>
-                            <div className="input-wrap" id="body">
+                            <div className="row-wrap" id="body">
                                 <div className="input-line" id="body">
                                     <textarea className="input-line"
                                         id="body"

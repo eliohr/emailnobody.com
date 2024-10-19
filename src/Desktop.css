@@ -21,13 +21,14 @@
     #title p {
         font-size: min(2vw, 20px);
         transform: translateY(-2vw);
+        color:darkblue;
     }
 
     #title h2 {
         font-size: min(4vw, 40px);
     }
 
-    #oopsy, #please-accept {
+    #oopsy, #please-accept, #profanity {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);    
@@ -44,7 +45,7 @@
         margin: 10px 30px;
     }
 
-    #oopsy, #please-accept {
+    #oopsy, #please-accept, #profanity {
             top: 80%;
             left: 50%;
             transform: translate(-50%, -80%);
@@ -89,7 +90,7 @@
     opacity: 50%;
 }
 
-#oopsy, #please-accept {
+#oopsy, #please-accept, #profanity {
     pointer-events: none;
     opacity: 0;
     transition: none;
@@ -98,6 +99,12 @@
     height: 50%;
 }
 
-#please-accept {
+#please-accept, #profanity {
     z-index: 99;
 }
+
+#warning-window {
+    max-width: 400px;
+}
+  
+  
